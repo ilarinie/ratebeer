@@ -5,6 +5,7 @@ module RatingAverage
 		self.ratings.each do |rating|
 			avg += rating.score
 		end
-		avg.to_f / self.ratings.count
+		b = (avg.to_d / self.ratings.count)
+		((b*10).round / 10.0)
 	end
 end
