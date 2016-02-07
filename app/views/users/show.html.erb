@@ -29,7 +29,9 @@ member of
 <tr>
 	<td><%= rating %></td>
 	<% if @user == current_user %>
+	<td>
 	<%= link_to 'delete', rating, method: :delete, data: { confirm: 'Are you sure?' } %>
+	</td>
     <% end %>
 </tr>
 <% end %>
