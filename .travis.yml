@@ -1,11 +1,15 @@
 language: ruby
-
 rvm:
- - 2.3.0
-
-
+- 2.3.0
 script:
- - bundle exec rake db:migrate --trace
- - RAILS_ENV=test bundle exec rake db:migrate --trace
- - bundle exec rake db:test:prepare
- - bundle exec rspec -fd spec/
+- bundle exec rake db:migrate --trace
+- RAILS_ENV=test bundle exec rake db:migrate --trace
+- bundle exec rake db:test:prepare
+- bundle exec rspec -fd spec/
+deploy:
+  provider: heroku
+  api_key:
+    secure: VsZl/5M/jOj95NBQmMVB3z+l9PgS9Wsfe3s+yV/rOq49Ya9EwGJnF3EZLKxZgMjwsgl5Om8gjcEKAVrEYNmP48W+cXGBZP2D9MrQJsf7E6PLbq3nBh0fb2iBpm7z9rJvDg0bDmAyTwt5OWKIpXMPNoXwLQbMQ8BAPBEsmmt2KpaGBW7I9blzz3copvtErZqa5Af3q67GcMb/J6nBkyuLi6u1aujjhbrwJ+PBP2vtZAzJ5VOM8ySsbeC2VJmLotV+AutIotXJwKOWTghu8P2M7zsBPdVHZrKVpbKVJQpgZoCyLB+QCgWqVetFK8fzORmUeMGlP8D03h5byQGRJhHQemffnuls5avNuu39yObiqAwEociTE5HM3cNKxzkYOthmslpKkPhNTxNKdbknFI34ERogZaobVrxqkfWXU3jfVMzCEA8tFl/TdXRhpOg7e4Iky90EBqcL3cB0eM1xUVHv8v6ntY14uyh9tmooRYD5R68g8qqtCwc4yYbdXQKnwfBwy5mQiyZDwT9gQfPgRSWUZCjJOyWOcFKx7HesgUv0yDzE+vtImIW2r/WfW5e98l+A/2CrJdLKKuJf8125qW27y7twTlrrcf0qq7/JmF/GJn3QLq3/JByZFNtqMZ6LqpfWjdyiQcaG21WyHCN0Imf0PDNhaQxWpt25EfIah5JDoW8=
+  app: limitless-cove-19010
+  on:
+    repo: ilarinie/ratebeer
