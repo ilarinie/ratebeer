@@ -1,6 +1,6 @@
 class SessionsController < ApplicationController
   def new
-    # renderöi kirjautumissivun
+    # renderï¿½i kirjautumissivun
   end
 
   def create
@@ -16,7 +16,7 @@ class SessionsController < ApplicationController
   def destroy
     # nollataan sessio
     session[:user_id] = nil
-    # uudelleenohjataan sovellus pääsivulle
+    # uudelleenohjataan sovellus pï¿½ï¿½sivulle
     redirect_to :root
   end
 end
