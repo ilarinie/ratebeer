@@ -13,3 +13,4 @@ deploy:
   app: limitless-cove-19010
   on:
     repo: ilarinie/ratebeer
+  run: "rake db:migrate"
