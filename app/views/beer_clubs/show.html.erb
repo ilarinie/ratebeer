@@ -14,6 +14,10 @@
   <strong>City:</strong>
   <%= @beer_club.city %>
 </p>
+<%= form_for(@membership) do |f| %>
+   <%= f.hidden_field :beer_club_id %>
+   <%= f.submit value:"join the club" %>
+<% end %>
 <h2> Members </h2>
 <ul>
 <% @beer_club.memberships.each do |membership| %>
