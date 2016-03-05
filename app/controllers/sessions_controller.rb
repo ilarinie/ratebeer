@@ -4,7 +4,10 @@ class SessionsController < ApplicationController
   end
 
   def create
-      user = User.find_by username: params[:username]
+    user = User.find_by username: params[:username]
+    if user.disabled?
+      redirect_to :back, notice: "Contact admin, plx"
+    else
       if user && user.authenticate(params[:password])
         session[:user_id] = user.id
         redirect_to user_path(user), notice: "Welcome back!"
@@ -12,6 +15,11 @@ class SessionsController < ApplicationController
         redirect_to :back, notice: "Username and/or password mismatch"
       end
     end
+  end
+
+  def create_oauth
+     byebug
+  end
 
   def destroy
     # nollataan sessio

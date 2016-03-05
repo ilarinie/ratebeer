@@ -4,7 +4,7 @@ class UsersController < ApplicationController
   # GET /users
   # GET /users.json
   def index
-    @users = User.all
+    @users = User.includes(:ratings,:beers).all
   end
 
   # GET /users/1
@@ -55,13 +55,19 @@ class UsersController < ApplicationController
   # DELETE /users/1
   # DELETE /users/1.json
   def destroy
-	
+
     @user.destroy
     respond_to do |format|
       format.html { redirect_to users_url, notice: 'User was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
+
+  def freeze
+   user = User.find(params[:id])
+   user.update_attribute(:disabled, true)
+   redirect_to :back
+ end
 
   private
     # Use callbacks to share common setup or constraints between actions.
