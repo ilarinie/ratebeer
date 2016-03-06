@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :membership_confirmations, only: [:create, :destroy]
   resources :memberships
   resources :beer_clubs
   resources :users
@@ -22,6 +23,7 @@ Rails.application.routes.draw do
   get 'ngbeerlist', to:'beers#nglist'
   get 'ngbrewerylist', to:'breweries#nglist'
   get 'auth/:provider/callback', to: 'sessions#create_oauth'
+  post 'confirm', to: 'membership_confirmations#confirm'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

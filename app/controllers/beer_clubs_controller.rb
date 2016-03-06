@@ -14,8 +14,7 @@ class BeerClubsController < ApplicationController
     if current_user and current_user.in? @beer_club.members
       @membership = @beer_club.memberships.find{ |m| m.user = current_user}
     else
-      @membership = Membership.new
-      @membership.beer_club = @beer_club
+      @membership_confirmation = MembershipConfirmation.new
     end
   end
 
@@ -35,6 +34,7 @@ class BeerClubsController < ApplicationController
 
     respond_to do |format|
       if @beer_club.save
+        @beer_club.members << current_user
         format.html { redirect_to @beer_club, notice: 'Beer club was successfully created.' }
         format.json { render :show, status: :created, location: @beer_club }
       else

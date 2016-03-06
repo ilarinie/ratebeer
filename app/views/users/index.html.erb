@@ -16,7 +16,7 @@
         <td><%= user.beers.size %></td>
         <td><%= user.ratings.size %></td>
         <td>
-          <% if current_user.admin and user.disabled? %>
+          <% if current_user.admin? and user.disabled? %>
             <span class="label label-info">account frozen</span>
           <% end %>
         </td>

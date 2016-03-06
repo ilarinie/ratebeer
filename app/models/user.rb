@@ -12,6 +12,7 @@ class User < ActiveRecord::Base
   has_many :beers, through: :ratings
   has_many :memberships, dependent: :destroy
   has_many :beer_clubs, through: :memberships
+  has_many :membership_confirmations, dependent: :destroy
 
   def to_s
     username.to_s

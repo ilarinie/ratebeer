@@ -4,7 +4,7 @@ class Brewery < ActiveRecord::Base
   scope :active, -> { where active:true }
   scope :retired, -> { where active:[nil,false] }
 
-  has_many :beers, dependent: :destroy, touch: true
+  has_many :beers, dependent: :destroy
   has_many :ratings, through: :beers
 
   def beer_count

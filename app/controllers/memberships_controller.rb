@@ -25,6 +25,7 @@ class MembershipsController < ApplicationController
   # POST /memberships
   # POST /memberships.json
   def create
+     byebug
       @membership = Membership.new(membership_params)
       club = BeerClub.find membership_params[:beer_club_id]
       if not current_user.in? club.members and @membership.save
@@ -69,6 +70,6 @@ class MembershipsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def membership_params
-      params.require(:membership).permit(:beer_club_id)
+      params.require(:membership).permit(:user_id, :beer_club_id)
     end
 end

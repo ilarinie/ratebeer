@@ -38,14 +38,28 @@
 <% if current_user.in? @beer_club.members %>
   <%= form_for(@membership, method: "delete") do |f| %>
     <%= f.hidden_field :beer_club_id %>
+    <%= f.hidden_field :user_id, :value => current_user.id %>
     <%= f.submit value: "end the membership" %>
   <% end %>
+
+  <p>
+    Pending applications
+    <ul>
+      <% if @beer_club.membership_confirmations.any? %>
+        <% @beer_club.membership_confirmations.each do |membership_confirmation| %>
+          <li><%= membership_confirmation.user %> - <%= membership_confirmation.beer_club %>
+            <%= link_to 'Confirm',confirm_url(id:membership_confirmation.id), method: :post %></li>
+        <% end %>
+      <% end %>
+  </ul>
+</p>
+
 <% end %>
 
 <% if current_user and not current_user.in? @beer_club.members %>
 
-  <%= form_for(@membership) do |f| %>
-    <%= f.hidden_field :beer_club_id %>
+  <%= form_for(@membership_confirmation) do |f| %>
+    <%= f.hidden_field :beer_club_id, :value => @beer_club.id %>
     <%= f.submit value:"join the club" %>
   <% end %>
 

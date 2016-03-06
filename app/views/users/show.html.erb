@@ -15,6 +15,19 @@
       <%= link_to club.name, club %>
     <% end %>
   </p>
+  <p>
+    Pending applications
+    <ul>
+    <% @user.beer_clubs.each do |club| %>
+      <% if club.membership_confirmations.any? %>
+        <% club.membership_confirmations.each do |membership_confirmation| %>
+          <li><%= membership_confirmation.user %> - <%= membership_confirmation.beer_club %>
+            <%= link_to 'Confirm',confirm_url(id:membership_confirmation.id), method: :post %></li>
+
+        <% end %>
+      <% end %>
+    <% end %>
+  </ul>
 <% else %>
   <p>No club memberships</p>
 <% end %>
