@@ -1,4 +1,4 @@
-https://limitless-cove-19010.herokuapp.com/breweries
+https://mysterious-stream-67599.herokuapp.com/
 
 [![Build Status](https://travis-ci.org/ilarinie/ratebeer.png)](https://travis-ci.org/ilarinie/ratebeer)
 
